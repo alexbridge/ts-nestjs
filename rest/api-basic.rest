@@ -1,0 +1,15 @@
+### GET with basic user 1 and role VIEW
+GET http://localhost:3000/auth/basic/view HTTP/1.1
+Authorization: Basic username1:password1
+
+### GET with basic user 1 and role VIEW but MODIFY endpoint
+GET http://localhost:3000/auth/basic/modify HTTP/1.1
+Authorization: Basic username1:password1
+
+### GET with basic user 2 and role MODIFY
+GET http://localhost:3000/auth/basic/modify HTTP/1.1
+Authorization: Basic username2:password2
+
+### GET with basic user 2 and role MODIFY but VIEW endpoint
+GET http://localhost:3000/auth/basic/view HTTP/1.1
+Authorization: Basic username2:password2
