@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: ${COMPOSE_PROJECT_NAME}-app
+    image: ${COMPOSE_PROJECT_NAME}/app:${COMPOSE_VERSION}
+    build:
+      context: ..
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+      # nodejs debug port
+      - 9229:9229
+    volumes:
+      - ../:/usr/src/app
+      - /usr/src/app/node_modules
+    healthcheck:
+      test: curl -f http://localhost:3000/echo
+      start_period: 10s
+      interval: 5s
+      timeout: 1s
+      retries: 30
